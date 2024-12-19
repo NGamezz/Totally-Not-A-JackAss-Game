@@ -124,11 +124,17 @@ namespace Utility
     {
         public Span<T> Slice => Buffer.AsSpan(0, _desiredLength);
         public T[] Buffer { get; }
+
+        public T this[int index]
+        {
+            get => Buffer[index];
+            set => Buffer[index] = value;
+        }
         
         private readonly int _desiredLength;
 
         public static implicit operator T[](TempBuffer<T> buffer) => buffer.Buffer;
-   
+
         public static TempBuffer<T> Create(int size)
         {
             return new TempBuffer<T>(size);
@@ -191,6 +197,7 @@ namespace Utility
     {
         private static readonly CancellationTokenSource Cts = new();
 
+  
         //Make sure the tasks are cancelled when quitting the application.
         [RuntimeInitializeOnLoadMethod]
         private static void Initialize()

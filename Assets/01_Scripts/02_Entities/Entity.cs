@@ -17,7 +17,7 @@ public abstract class Entity : ManagedMonoBehaviour
 
     private void OnDestroy()
     {
-        Stats.Dispose();
+        Stats?.Dispose();
     }
 
 }

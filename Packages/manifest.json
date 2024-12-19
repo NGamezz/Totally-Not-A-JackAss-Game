@@ -1,8 +1,12 @@
 {
   "dependencies": {
+    "com.cysharp.r3": "https://github.com/Cysharp/R3.git?path=src/R3.Unity/Assets/R3.Unity",
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
-    "com.dbrizov.naughtyattributes": "2.1.4",
+    "com.eflatun.scenereference": "4.1.1",
+    "com.github-glitchenzo.nugetforunity": "4.1.1",
     "com.kylewbanks.scenerefattribute": "0.13.0",
+    "com.unity.2d.sprite": "1.0.0",
+    "com.unity.addressables": "2.2.2",
     "com.unity.behavior": "1.0.3",
     "com.unity.collab-proxy": "2.5.2",
     "com.unity.collections": "2.5.1",
@@ -53,9 +57,11 @@
       "name": "package.openupm.com",
       "url": "https://package.openupm.com",
       "scopes": [
-        "com.kylewbanks.scenerefattribute",
         "com.cysharp.unitask",
         "com.dbrizov.naughtyattributes",
+        "com.eflatun.scenereference",
+        "com.github-glitchenzo.nugetforunity",
+        "com.kylewbanks.scenerefattribute",
         "games.corundum.isexternalinit"
       ],
       "overrideBuiltIns": false

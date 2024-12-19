@@ -14,6 +14,7 @@ public class EntityStats : IDisposable
     {
         get
         {
+            //Could be optimised, since it uses Boxing currently.
             var query = new Query<StatTypes>(StatTypes.Health, _baseStats.health);
             _mediator.PerformQuery(query);
             return (float)query.Value;

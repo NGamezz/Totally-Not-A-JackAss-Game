@@ -2,18 +2,20 @@
 
 using System;
 using System.Collections.Generic;
+using Utility.Timers;
 
 public sealed class Mediator<TStatType> : IDisposable
 {
     private readonly IList<Modifier<TStatType>> _modifiers = new List<Modifier<TStatType>>();
+    public delegate void RefAction<T>(ref T value);
 
-    public delegate void RefAction(ref Query<TStatType> stat);
-    public event RefAction Queries;
-
+    public event RefAction<Query<TStatType>> Queries;
+    
     public void PerformQuery(Query<TStatType> query) => Queries?.Invoke(ref query);
 
     public void AddModifier(Modifier<TStatType> modifier)
     {
+        
         _modifiers.Add(modifier);
         Queries += modifier.Handle;
 
@@ -35,21 +37,21 @@ public sealed class Mediator<TStatType> : IDisposable
     }
 }
 
-public class StatModifier<T> : Modifier<T> where T : Enum
+public class StatModifier<TType> : Modifier<TType> where TType : Enum
 {
-    public readonly T Type;
+    public readonly TType Type;
 
     public delegate void Func(ref ValueType value);
 
     public readonly Func Operator;
 
-    public StatModifier(float duration, Func op, T type) : base(duration)
+    public StatModifier(float duration, Func op, TType type) : base(duration)
     {
         Type = type;
         Operator = op;
     }
 
-    public override void Handle(ref Query<T> query)
+    public override void Handle(ref Query<TType> query)
     {
         if (!query.Type.Equals(Type)) return;
 
